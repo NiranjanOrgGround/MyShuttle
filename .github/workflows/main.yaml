@@ -45,10 +45,6 @@ jobs:
 
             - name: Build and Push the image to GHCR
               run: |
-                docker login -u ${{ vars.DOCKER_USER }} -p ${{ secrets.DOCKER_PAT }}
-                docker build . -t niranjanakoni/myShuttle:latest
-                docker push niranjanakoni/myShuttle:latest
-            
-            # docker login -u $GITHUB_REPOSITORY_OWNER -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-            # docker build . -t ghcr.io/canarysplayground/pet-clinic:latest           
-            # docker push ghcr.io/canarysplayground/pet-clinic:latest
+                docker login -u $GITHUB_REPOSITORY_OWNER -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+                docker build . -t ghcr.io/canarysplayground/myShuttle:latest           
+                docker push ghcr.io/canarysplayground/myShuttle:latest
