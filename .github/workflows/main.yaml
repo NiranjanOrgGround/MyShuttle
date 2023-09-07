@@ -46,5 +46,5 @@ jobs:
             - name: Build and Push the image to GHCR
               run: |
                 docker login -u $GITHUB_REPOSITORY_OWNER -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-                docker build . -t ghcr.io/canarysplayground/myShuttle:latest           
-                docker push ghcr.io/canarysplayground/myShuttle:latest
+                docker build . -t ghcr.io/canarysplayground/myshuttle:latest           
+                docker push ghcr.io/canarysplayground/myshuttle:latest
