@@ -28,12 +28,6 @@ jobs:
                 name: myArtifact
                 path: ./target/*.war
 
-            - name: upload Build Artifacts
-              uses: actions/upload-artifact@v3.1.2
-              with:
-                name: myArtifact
-                path: ./target/*.war
-
     ghcr:
         name: Build and Pushing image to GHCR
         runs-on: ubuntu-latest
