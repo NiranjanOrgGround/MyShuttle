@@ -1,8 +1,8 @@
 name: Java Application
 
 on:
-    push:
-    pull_request:
+    # push:
+    # pull_request:
     workflow_dispatch:
 
 jobs:
@@ -27,3 +27,28 @@ jobs:
               with:
                 name: myArtifact
                 path: ./target/*.war
+
+            - name: upload Build Artifacts
+              uses: actions/upload-artifact@v3.1.2
+              with:
+                name: myArtifact
+                path: ./target/*.war
+
+    ghcr:
+        name: Build and Pushing image to GHCR
+        runs-on: ubuntu-latest
+        needs: Build
+
+        steps:
+            - name: Checkout the Source Code
+              uses: actions/checkout@v3
+
+            - name: Build and Push the image to GHCR
+              run: |
+                docker login -u ${{ vars.DOCKER_USER }} -p ${{ secrets.DOCKER_PAT }}
+                docker build . -t niranjanakoni/myShuttle:latest
+                docker push niranjanakoni/myShuttle:latest
+            
+            # docker login -u $GITHUB_REPOSITORY_OWNER -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
+            # docker build . -t ghcr.io/canarysplayground/pet-clinic:latest           
+            # docker push ghcr.io/canarysplayground/pet-clinic:latest
