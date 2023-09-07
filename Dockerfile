@@ -14,5 +14,5 @@ RUN set -x \
 
 RUN export CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar
 
-COPY ./target/myshuttledev.war /usr/local/tomcat/webapps/myshuttledev.war
+COPY ./target/*.war /usr/local/tomcat/webapps/
 
