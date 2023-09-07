@@ -40,6 +40,12 @@ jobs:
         needs: Build
 
         steps:
+            - name: Downloading the artifacts
+              uses: actions/download-artifact@v3
+              with:
+                  name: myArtifact
+                  path: ./target
+
             - name: Checkout the Source Code
               uses: actions/checkout@v3
 
