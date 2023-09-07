@@ -5,6 +5,6 @@ WORKDIR /opt
 ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.80/bin/apache-tomcat-9.0.80.tar.gz .
 RUN tar -xzf apache-tomcat-9.0.80.tar.gz \ 
     && mv apache-tomcat-9.0.80 tomcat
-COPY ./target/myshuttledev.war /opt/tomcat/webapps
+COPY **/*.war /opt/tomcat/webapps
 EXPOSE 8080
 CMD [ "/opt/tomcat/bin/catalina.sh", "run" ]
