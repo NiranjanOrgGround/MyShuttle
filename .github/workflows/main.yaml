@@ -41,6 +41,15 @@ jobs:
         needs: Build
 
         steps:
+            - name: Version variable
+              id: set_version
+              run: |
+                  echo "VERSION=$(date +"%Y%m%d"_+"%s")" >> $GITHUB_OUTPUT
+
+            - name: version
+              env:
+                  VER: ${{ steps.set_version.outputs.VERSION }}
+              
             - name: Downloading the artifacts
               uses: actions/download-artifact@v3
               with:
@@ -53,5 +62,5 @@ jobs:
             - name: Build and Push the image to GHCR
               run: |
                 docker login -u $GITHUB_REPOSITORY_OWNER -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-                docker build . -t ghcr.io/canarysplayground/myshuttle:latest           
-                docker push ghcr.io/canarysplayground/myshuttle:latest
+                docker build . -t ghcr.io/canarysplayground/myshuttle:$VER           
+                docker push ghcr.io/canarysplayground/myshuttle:$VER
