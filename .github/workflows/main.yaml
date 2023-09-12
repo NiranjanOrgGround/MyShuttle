@@ -48,7 +48,7 @@ jobs:
 
             - name: version
               run: |
-                  echo "VERSION=$(echo $(date +%Y%m%d_+%s))" >> $GITHUB_ENV
+                  echo "VERSION=$(echo $(date +%Y%m%d_%H%M))" >> $GITHUB_ENV
               
             - name: Downloading the artifacts
               uses: actions/download-artifact@v3
