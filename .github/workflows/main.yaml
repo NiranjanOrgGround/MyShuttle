@@ -37,6 +37,7 @@ jobs:
 
     ghcr:
         name: Build and Pushing image to GHCR
+        environment: 'GHCR'
         runs-on: ubuntu-latest
         needs: Build
 
