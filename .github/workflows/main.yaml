@@ -56,7 +56,7 @@ jobs:
             - name: before checkout
               run: |
                   pwd
-                  ls
+                  ls target
 
             - name: Checkout the Source Code
               uses: actions/checkout@v3
@@ -64,7 +64,7 @@ jobs:
             - name: after checkout
               run: |
                   pwd
-                  ls
+                  ls target
 
             - name: Build and Push the image to GHCR
               run: |
