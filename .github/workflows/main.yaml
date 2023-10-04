@@ -44,11 +44,6 @@ jobs:
         needs: Build
 
         steps:
-            # - name: Version variable
-            #   id: set_version
-            #   run: |
-            #       echo "VERSION=$(date +"%Y%m%d"_+"%s")" >> $GITHUB_OUTPUT
-
             - name: version
               run: |
                   echo "VERSION=$(echo $(date +%Y%m%d_%H%M))" >> $GITHUB_ENV
@@ -59,11 +54,17 @@ jobs:
                   name: "myArtifact_${{needs.Build.outputs.set_date}}"
                   path: ./target
 
+            - run: before checkout
+            - run: pwd && ls
+
             - name: Checkout the Source Code
               uses: actions/checkout@v3
+
+            - run: after checkout
+            - run: pwd && ls
 
             - name: Build and Push the image to GHCR
               run: |
                 docker login -u $GITHUB_REPOSITORY_OWNER -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-                docker build . -t ghcr.io/canarysplayground/myshuttle:${{ env.VERSION }}     
-                docker push ghcr.io/canarysplayground/myshuttle:${{ env.VERSION }}
+                docker build . -t ghcr.io/niranjanorgground/myshuttle:${{ env.VERSION }}     
+                docker push ghcr.io/niranjanorgground/myshuttle:${{ env.VERSION }}
