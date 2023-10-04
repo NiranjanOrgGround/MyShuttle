@@ -1,11 +1,10 @@
 name: Java 
 
 on:
-    push:
+    push
     # pull_request:
     # pull_request_review:
     #     types: [submitted]
-    workflow_dispatch:
 
 jobs:
     Build:
@@ -56,16 +55,16 @@ jobs:
 
             - name: before checkout
               run: |
-                    pwd
-                    ls
+                  pwd
+                  ls
 
             - name: Checkout the Source Code
               uses: actions/checkout@v3
 
             - name: after checkout
               run: |
-                    pwd
-                    ls
+                  pwd
+                  ls
 
             - name: Build and Push the image to GHCR
               run: |
