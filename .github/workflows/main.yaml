@@ -60,5 +60,5 @@ jobs:
             - name: Build and Push the image to GHCR
               run: |
                 docker login -u ${{ vars.DOCKER_USER }} -p ${{ secrets.DOCKER_PAT }}
-                docker build . -t niranjanakoni/myshuttle:${{ env.VERSION }}     
-                docker push niranjanakoni/myshuttle:${{ env.VERSION }}
+                docker build . -t ghcr.io/niranjanakoni/myshuttle:${{ env.VERSION }}     
+                docker push ghcr.io/niranjanakoni/myshuttle:${{ env.VERSION }}
